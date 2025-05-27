@@ -15,6 +15,8 @@ public class ViewController {
     }
     @PostMapping("show")
     public String handleForm(@RequestParam("inputText") String inputText, Model model){
+        // Chuyển \n thành <br> để hiển thị đúng | sẽ không bị mất dấu xuống dòng
+        String formattedText = inputText.replaceAll("(\r\n|\n)", "<br>");
         model.addAttribute("outputText", inputText);
         return "index";
     }
